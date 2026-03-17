@@ -23,6 +23,8 @@ export const Single = () => {
     return <h2 className="text-center mt-5">Loading...</h2>;
   }
 
+  const props = item.properties;
+
   return (
     <div className="container mt-5">
       <div className="row align-items-center mb-5">
@@ -30,7 +32,7 @@ export const Single = () => {
           <img
             src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/${type}/${uid}.jpg`}
             className="img-fluid"
-            alt={item.properties.name}
+            alt={props.name}
             onError={(e) => {
               e.target.src =
                 "https://starwars-visualguide.com/assets/img/placeholder.jpg";
@@ -39,18 +41,19 @@ export const Single = () => {
         </div>
 
         <div className="col-md-6 text-center">
-          <h1 className="mb-4">{item.properties.name}</h1>
+          <h1 className="mb-4">{props.name}</h1>
 
           <p className="fs-4">
-            This section shows more detailed information about this{" "}
-            {type === "people"
-              ? "character"
-              : type === "planets"
-              ? "planet"
-              : "vehicle"}{" "}
-            from Star Wars.
+            {type === "people" &&
+              `${props.name} is a ${props.gender} character from the Star Wars universe. This character was born in ${props.birth_year}, has a height of ${props.height} cm, with ${props.skin_color} skin and ${props.eye_color} eyes.`}
+
+            {type === "planets" &&
+              `${props.name} is a planet from the Star Wars universe. It has a climate of ${props.climate}, a population of ${props.population}, an orbital period of ${props.orbital_period}, a rotation period of ${props.rotation_period}, and a diameter of ${props.diameter}.`}
+
+            {type === "vehicles" &&
+              `${props.name} is a vehicle from the Star Wars universe. Its model is ${props.model}, built by ${props.manufacturer}, with capacity for ${props.passengers} passengers, and belongs to the ${props.vehicle_class} class. Its cost is ${props.cost_in_credits} credits.`}
           </p>
-        </div> 
+        </div>
       </div>
 
       <hr className="border border-danger border-2 opacity-100" />
@@ -60,27 +63,27 @@ export const Single = () => {
           <>
             <div className="col">
               <h4>Name</h4>
-              <p>{item.properties.name}</p>
+              <p>{props.name}</p>
             </div>
             <div className="col">
               <h4>Birth Year</h4>
-              <p>{item.properties.birth_year}</p>
+              <p>{props.birth_year}</p>
             </div>
             <div className="col">
               <h4>Gender</h4>
-              <p>{item.properties.gender}</p>
+              <p>{props.gender}</p>
             </div>
             <div className="col">
               <h4>Height</h4>
-              <p>{item.properties.height}</p>
+              <p>{props.height}</p>
             </div>
             <div className="col">
               <h4>Skin Color</h4>
-              <p>{item.properties.skin_color}</p>
+              <p>{props.skin_color}</p>
             </div>
             <div className="col">
               <h4>Eye Color</h4>
-              <p>{item.properties.eye_color}</p>
+              <p>{props.eye_color}</p>
             </div>
           </>
         )}
@@ -89,27 +92,27 @@ export const Single = () => {
           <>
             <div className="col">
               <h4>Name</h4>
-              <p>{item.properties.name}</p>
+              <p>{props.name}</p>
             </div>
             <div className="col">
               <h4>Climate</h4>
-              <p>{item.properties.climate}</p>
+              <p>{props.climate}</p>
             </div>
             <div className="col">
               <h4>Population</h4>
-              <p>{item.properties.population}</p>
+              <p>{props.population}</p>
             </div>
             <div className="col">
               <h4>Orbital Period</h4>
-              <p>{item.properties.orbital_period}</p>
+              <p>{props.orbital_period}</p>
             </div>
             <div className="col">
               <h4>Rotation Period</h4>
-              <p>{item.properties.rotation_period}</p>
+              <p>{props.rotation_period}</p>
             </div>
             <div className="col">
               <h4>Diameter</h4>
-              <p>{item.properties.diameter}</p>
+              <p>{props.diameter}</p>
             </div>
           </>
         )}
@@ -118,27 +121,27 @@ export const Single = () => {
           <>
             <div className="col">
               <h4>Name</h4>
-              <p>{item.properties.name}</p>
+              <p>{props.name}</p>
             </div>
             <div className="col">
               <h4>Model</h4>
-              <p>{item.properties.model}</p>
+              <p>{props.model}</p>
             </div>
             <div className="col">
               <h4>Passengers</h4>
-              <p>{item.properties.passengers}</p>
+              <p>{props.passengers}</p>
             </div>
             <div className="col">
               <h4>Vehicle Class</h4>
-              <p>{item.properties.vehicle_class}</p>
+              <p>{props.vehicle_class}</p>
             </div>
             <div className="col">
               <h4>Manufacturer</h4>
-              <p>{item.properties.manufacturer}</p>
+              <p>{props.manufacturer}</p>
             </div>
             <div className="col">
               <h4>Cost</h4>
-              <p>{item.properties.cost_in_credits}</p>
+              <p>{props.cost_in_credits}</p>
             </div>
           </>
         )}
